@@ -487,7 +487,7 @@ net_connect_name(const char *ip, int port, int *sd)
         return EINVAL;
     bzero(&hints, sizeof(hints));
     hints.ai_family = net_af_spec();
-    hints.ai_flags = AI_NUMERICHOST;
+    hints.ai_flags = 0 ;
     hints.ai_socktype = SOCK_STREAM;
     if (getaddrinfo(ip, portstr, &hints, &res) != 0)
         return errno;
