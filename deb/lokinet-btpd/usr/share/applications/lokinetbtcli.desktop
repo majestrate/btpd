@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lokinet btcli
+Exec=bash -c '/usr/bin/btcli --help;$SHELL'
+Terminal=true
+Type=Application
+Icon=/usr/share/icons/lokinetbtpd.png
+Comment=Lokinet BitTorrent Daemon
+Categories=Network;FileTransfer;P2P;GTK;
+

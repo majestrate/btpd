@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Lokinet btpd
+Exec=/usr/bin/btpd -p 53 --bw-out 200 --max-peers 40 --empty-start
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/lokinetbtpd.png
+Comment=Lokinet BitTorrent Daemon
+Categories=Network;FileTransfer;P2P;GTK;
