@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Lokinet btpd
-Exec=/usr/bin/btpd -p 53 --bw-out 200 --max-peers 40 --empty-start
+Exec=/usr/bin/btpd -4
 Terminal=false
 Type=Application
 Icon=/usr/share/icons/lokinetbtpd.png
