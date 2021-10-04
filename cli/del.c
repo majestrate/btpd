@@ -1,10 +1,10 @@
-#include "btcli.h"
+#include "txcli.h"
 
 void
 usage_del(void)
 {
     printf(
-        "Remove torrents from btpd.\n"
+        "Remove torrents from toxn.\n"
         "\n"
         "Usage: del torrent ...\n"
         "\n"
@@ -34,8 +34,8 @@ cmd_del(int argc, char **argv)
     if (argc < 1)
         usage_del();
 
-    btpd_connect();
+    toxn_connect();
     for (int i = 0; i < argc; i++)
         if (torrent_spec(argv[i], &t))
-            handle_ipc_res(btpd_del(ipc, &t), "del", argv[i]);
+            handle_ipc_res(toxn_del(ipc, &t), "del", argv[i]);
 }

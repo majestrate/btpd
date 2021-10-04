@@ -1,5 +1,5 @@
-#ifndef BTPD_BENC_H
-#define BTPD_BENC_H
+#ifndef TOXN_BENC_H
+#define TOXN_BENC_H
 
 enum be_type {
     BE_ANY,

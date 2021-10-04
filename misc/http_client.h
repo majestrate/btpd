@@ -1,5 +1,5 @@
-#ifndef BTPD_HTTP_CLIENT_H
-#define BTPD_HTTP_CLIENT_H
+#ifndef TOXN_HTTP_CLIENT_H
+#define TOXN_HTTP_CLIENT_H
 
 struct http_url {
     char *host;

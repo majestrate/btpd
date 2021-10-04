@@ -6,7 +6,7 @@
 *.a
 
 # Target binaries
-btpd/btpd
-cli/btcli
-info/btinfo
+toxn/toxn
+cli/txcli
+info/txinfo
 

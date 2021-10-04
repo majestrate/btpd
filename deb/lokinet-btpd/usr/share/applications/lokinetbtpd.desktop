@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Lokinet btpd
-Exec=/usr/bin/btpd -4
+Name=Lokinet toxn
+Exec=/usr/bin/toxn -4
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/lokinetbtpd.png
+Icon=/usr/share/icons/lokinettoxn.png
 Comment=Lokinet BitTorrent Daemon
 Categories=Network;FileTransfer;P2P;GTK;

@@ -1,4 +1,4 @@
-#include "btcli.h"
+#include "txcli.h"
 #include "utils.h"
 
 void
@@ -130,10 +130,10 @@ again:
     bzero(&cba.tot, sizeof(cba.tot));
     cba.tot.state = IPC_TSTATE_INACTIVE;
     if (tps == NULL)
-        err = btpd_tget_wc(ipc, IPC_TWC_ACTIVE, stkeys, NSTKEYS,
+        err = toxn_tget_wc(ipc, IPC_TWC_ACTIVE, stkeys, NSTKEYS,
             stat_cb, &cba);
     else
-        err = btpd_tget(ipc, tps, ntps, stkeys, NSTKEYS, stat_cb, &cba);
+        err = toxn_tget(ipc, tps, ntps, stkeys, NSTKEYS, stat_cb, &cba);
     if (err != IPC_OK)
         diemsg("command failed (%s).\n", ipc_strerror(err));
     if (names)
@@ -191,6 +191,6 @@ cmd_stat(int argc, char **argv)
 
         }
     }
-    btpd_connect();
+    toxn_connect();
     do_stat(iflag, nflag, seconds, tps, ntps);
 }

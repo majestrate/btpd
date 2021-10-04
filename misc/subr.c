@@ -325,9 +325,9 @@ error:
 }
 
 char *
-find_btpd_dir(void)
+find_toxn_dir(void)
 {
-    char *res = getenv("BTPD_HOME");
+    char *res = getenv("TOXN_HOME");
     if (res != NULL)
         return strdup(res);
     char *home = getenv("HOME");
@@ -338,7 +338,7 @@ find_btpd_dir(void)
             home = pwent->pw_dir;
     }
     if (home != NULL)
-        asprintf(&res, "%s/.btpd", home);
+        asprintf(&res, "%s/.toxn", home);
     return res;
 }
 

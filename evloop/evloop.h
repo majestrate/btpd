@@ -1,5 +1,5 @@
-#ifndef BTPD_EVLOOP_H
-#define BTPD_EVLOOP_H
+#ifndef TOXN_EVLOOP_H
+#define TOXN_EVLOOP_H
 
 #include <sys/time.h>
 #include <stdint.h>

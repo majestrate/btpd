@@ -1,2 +1,2 @@
-rm /usr/share/applications/lokinetbtcli.desktop 
-rm /usr/share/applications/lokinetbtpd.desktop
+rm /usr/share/applications/lokinettxcli.desktop 
+rm /usr/share/applications/lokinettoxn.desktop

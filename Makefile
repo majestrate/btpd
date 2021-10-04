@@ -1,17 +1,17 @@
-# btpd - BitTorrent Protocol Daemon
+# toxn - BitTorrent Protocol Daemon
 # See LICENSE file for copyright and license details.
 
-BTPD_SRC    = ${wildcard btpd/*.c}
-BTPD_DEPS   = ${wildcard btpd/*.h}
-BTPD_OBJ    = ${BTPD_SRC:.c=.o}
+TOXN_SRC    = ${wildcard toxn/*.c}
+TOXN_DEPS   = ${wildcard toxn/*.h}
+TOXN_OBJ    = ${TOXN_SRC:.c=.o}
 
-BTCLI_SRC   = ${wildcard cli/*.c}
-BTCLI_DEPS  = ${wildcard cli/*.h}
-BTCLI_OBJ   = ${BTCLI_SRC:.c=.o}
+TXCLI_SRC   = ${wildcard cli/*.c}
+TXCLI_DEPS  = ${wildcard cli/*.h}
+TXCLI_OBJ   = ${TXCLI_SRC:.c=.o}
 
-BTINFO_SRC  = ${wildcard info/*.c}
-BTINFO_DEPS = ${wildcard info/*.h}
-BTINFO_OBJ  = ${BTINFO_SRC:.c=.o}
+TXINFO_SRC  = ${wildcard info/*.c}
+TXINFO_DEPS = ${wildcard info/*.h}
+TXINFO_OBJ  = ${TXINFO_SRC:.c=.o}
 
 MISC_SRC    = ${wildcard misc/*.c}
 MISC_DEPS   = ${wildcard misc/*.h}
@@ -23,10 +23,10 @@ EVLOOP_OBJ  = ${EVLOOP_SRC:.c=.o}
 
 include config.mk
 
-all: options btpd/btpd info/btinfo cli/btcli
+all: options toxn/toxn info/txinfo cli/txcli
 
 options:
-	@echo btpd build options:
+	@echo toxn build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
@@ -42,46 +42,46 @@ misc/libmisc.a: ${MISC_OBJ}
 evloop/libevloop.a: ${EVLOOP_OBJ}
 	ar rcs $@ ${EVLOOP_OBJ}
 
-btpd/btpd: ${BTPD_OBJ} misc/libmisc.a evloop/libevloop.a
-	${CC} ${CFLAGS} -o $@ ${BTPD_OBJ}	 misc/libmisc.a evloop/libevloop.a ${LDFLAGS}
+toxn/toxn: ${TOXN_OBJ} misc/libmisc.a evloop/libevloop.a
+	${CC} ${CFLAGS} -o $@ ${TOXN_OBJ}	 misc/libmisc.a evloop/libevloop.a ${LDFLAGS}
 
-info/btinfo: ${BTINFO_OBJ} misc/libmisc.a
-	${CC} ${CFLAGS} -o $@ ${BTINFO_OBJ} misc/libmisc.a ${LDFLAGS}
+info/txinfo: ${TXINFO_OBJ} misc/libmisc.a
+	${CC} ${CFLAGS} -o $@ ${TXINFO_OBJ} misc/libmisc.a ${LDFLAGS}
 
-cli/btcli: ${BTCLI_OBJ} misc/libmisc.a
-	${CC} ${CFLAGS} -o $@  ${BTCLI_OBJ}  misc/libmisc.a ${LDFLAGS}
+cli/txcli: ${TXCLI_OBJ} misc/libmisc.a
+	${CC} ${CFLAGS} -o $@  ${TXCLI_OBJ}  misc/libmisc.a ${LDFLAGS}
 
 clean:
-	rm -f btpd/btpd cli/btcli info/btinfo\
+	rm -f toxn/toxn cli/txcli info/txinfo\
 		**/*.o **/*.a\
-		btpd-${VERSION}.tar.gz
+		toxn-${VERSION}.tar.gz
 
 dist: clean
-	mkdir -p btpd-${VERSION}
-	cp -R COPYRIGHT Makefile README CHANGES configure config.mk btpd cli doc evloop info misc\
-		btpd-${VERSION}
-	tar -cf btpd-${VERSION}.tar btpd-${VERSION}
-	gzip btpd-${VERSION}.tar
-	rm -rf btpd-${VERSION}
+	mkdir -p toxn-${VERSION}
+	cp -R COPYRIGHT Makefile README CHANGES configure config.mk toxn cli doc evloop info misc\
+		toxn-${VERSION}
+	tar -cf toxn-${VERSION}.tar toxn-${VERSION}
+	gzip toxn-${VERSION}.tar
+	rm -rf toxn-${VERSION}
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f btpd/btpd cli/btcli info/btinfo ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/btpd
-	chmod 755 ${DESTDIR}${PREFIX}/bin/btcli
-	chmod 755 ${DESTDIR}${PREFIX}/bin/btinfo
+	cp -f toxn/toxn cli/txcli info/txinfo ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/toxn
+	chmod 755 ${DESTDIR}${PREFIX}/bin/txcli
+	chmod 755 ${DESTDIR}${PREFIX}/bin/txinfo
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	cp -f doc/*.1 ${DESTDIR}${MANPREFIX}/man1
-	chmod 644 ${DESTDIR}${MANPREFIX}/man1/btpd.1
-	chmod 644 ${DESTDIR}${MANPREFIX}/man1/btcli.1
-	chmod 644 ${DESTDIR}${MANPREFIX}/man1/btinfo.1
+	chmod 644 ${DESTDIR}${MANPREFIX}/man1/toxn.1
+	chmod 644 ${DESTDIR}${MANPREFIX}/man1/txcli.1
+	chmod 644 ${DESTDIR}${MANPREFIX}/man1/txinfo.1
 
 uninstall:
-	rm -f ${DESTDIR}${PREFIX}/bin/btpd\
-		${DESTDIR}${PREFIX}/bin/btcli\
-		${DESTDIR}${PREFIX}/bin/btinfo\
-		${DESTDIR}${MANPREFIX}/man1/btpd.1\
-		${DESTDIR}${MANPREFIX}/man1/btcli.1\
-		${DESTDIR}${MANPREFIX}/man1/btinfo.1
+	rm -f ${DESTDIR}${PREFIX}/bin/toxn\
+		${DESTDIR}${PREFIX}/bin/txcli\
+		${DESTDIR}${PREFIX}/bin/txinfo\
+		${DESTDIR}${MANPREFIX}/man1/toxn.1\
+		${DESTDIR}${MANPREFIX}/man1/txcli.1\
+		${DESTDIR}${MANPREFIX}/man1/txinfo.1
 
 .PHONY: all options clean dist install uninstall

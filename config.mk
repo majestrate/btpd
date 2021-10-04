@@ -1,5 +1,5 @@
-# btpd version
-NAME = btpd
+# toxn version
+NAME = toxn
 VERSION = 0.16
 
 # paths

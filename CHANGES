@@ -1,34 +1,34 @@
-btpd 0.16:
+toxn 0.16:
 ----------
 
 Misc:
 - Added "start all" (start -a) command.
 - Allow adding multiple torrents at once.
 - Custom list formatting options.
-- Man pages for btpd, btcli, and btinfo.
+- Man pages for toxn, txcli, and txinfo.
 
 Bug fixes:
 - Handle .torrent files larger than 2MB.
 - http parsing and addrinfo freeing fixes.
 
-btpd 0.15:
+toxn 0.15:
 ----------
 
 Bug fixes:
 - The event loop could busy loop for up to a millisecond sometimes.
-- On some platforms btpd couldn't initiate connections to other peers.
+- On some platforms toxn couldn't initiate connections to other peers.
 - The timer code was broken on MacOS X.
 
-btpd 0.14:
+toxn 0.14:
 ----------
 
 Misc:
 - IPv6 support.
 - Bans peers with bad data.
 - Better tracker compatability and more reliable tracker communication.
-- Show tracker counts in btcli stat.
+- Show tracker counts in txcli stat.
 - Compiles on Solaris 10.
-- Btpd will now signal startup failures via the process exit value and
+- Toxn will now signal startup failures via the process exit value and
   print the failure reason to stdout.
 - Better shutdown and torrent stop behaviour.
 - Needs pthreads again.
@@ -38,98 +38,98 @@ Bug fixes:
 - An integer array was misaligned, which could cause crashes on systems
   with alignment requirements. E.g., on XScale arm.
 - An error in the torrent parsing code could cause crashes.
-- The '--topdir' option to btcli add didn't work properly for single file
+- The '--topdir' option to txcli add didn't work properly for single file
   torrents.
-- The system name lookup scheme is now used. In btpd 0.13 only dns lookups
+- The system name lookup scheme is now used. In toxn 0.13 only dns lookups
   were performed.
 
-btpd 0.13:
+toxn 0.13:
 ----------
 
 Misc:
-- cURL is no longer required. btpd now uses its own http client.
-- btpd doesn't use threads anymore, so pthreads are not required.
-- Needed parts of libevent are now included in btpd.
-- I/O errors for torrents no longer make btpd shut down. Instead the
+- cURL is no longer required. toxn now uses its own http client.
+- toxn doesn't use threads anymore, so pthreads are not required.
+- Needed parts of libevent are now included in toxn.
+- I/O errors for torrents no longer make toxn shut down. Instead the
   problematic torrent is stopped.
-- Added the option '--ip' to specify the ip address btpd will report
+- Added the option '--ip' to specify the ip address toxn will report
   to trackers.
 - Resume file format changed. Already added torrents will be retested once.
 - The torrent info (ratio etc.) are now saved regularly.
 - Reduced the amount of outgoing data kept in memory.
 
-btpd 0.12:
+toxn 0.12:
 ----------
 
 Misc:
-- btpd now starts with the same set of active torrents as it had when it was
+- toxn now starts with the same set of active torrents as it had when it was
   last shut down. The new '--empty-start' option disables this feature.
-- btpd now supports the key tracker extension.
-- btpd now supports the multi tracker extension.
-- btcli list and stat print headers for the presented data. Both commands
+- toxn now supports the key tracker extension.
+- toxn now supports the multi tracker extension.
+- txcli list and stat print headers for the presented data. Both commands
   displays more data than before.
 - Torrent management has changed, with changes to the add and del commands
   and two new commands, start and stop, as a result. Operation on torrents
   can now be done by number as well as torrent file.
 - A small delay has been added for contacting the same announce URL.
-- btpd sends keepalive messages.
+- toxn sends keepalive messages.
 - The number of have messages sent has been reduced by not sending them to
   peers that already have the piece.
-- The structure of the torrents directory in the btpd directory has changed.
-  It is best to remove it before running btpd 0.12.
+- The structure of the torrents directory in the toxn directory has changed.
+  It is best to remove it before running toxn 0.12.
 
 Bug fixes:
 - Zero sized files in a torrent were not always created.
 
-btpd 0.11:
+toxn 0.11:
 ----------
 
 Bug fixes:
-- A file descriptor was closed too early, which could cause btpd to exit
+- A file descriptor was closed too early, which could cause toxn to exit
   with an error message on systems using epoll.
 
-btpd 0.10:
+toxn 0.10:
 ----------
 
 Misc:
 - The protection mode of the ipc socket can now be specified via the new
-  "--ipcprot" option for btpd.
+  "--ipcprot" option for toxn.
 
 Bug fixes:
 - The pid file is now written correctly.
-- btpd's "-d" option now works for relative paths too.
-- Add a time out for handshake completion. Prevously btpd could slowly
+- toxn's "-d" option now works for relative paths too.
+- Add a time out for handshake completion. Prevously toxn could slowly
   fill with unused incoming connections.
 
-btpd 0.9:
+toxn 0.9:
 ---------
 
 Misc:
-- Small changes to 'btcli stat' output.
+- Small changes to 'txcli stat' output.
 
 Bug fixes:
 - Use correct value for '--prealloc' default.
 - Stopped torrents now show correct rates (0kB/s).
 - The test of content that has been modified between runs was broken.
 
-btpd 0.8:
+toxn 0.8:
 ---------
 
 Misc:
-- btpd now requires pthreads.
-- btpd keeps its logs and other information it needs in its own directory.
-  $HOME/.btpd is the default location.
-- Various changes in btpd options ant btcli use. See '--help'.
+- toxn now requires pthreads.
+- toxn keeps its logs and other information it needs in its own directory.
+  $HOME/.toxn is the default location.
+- Various changes in toxn options ant txcli use. See '--help'.
 - The user chooses where to place content for each torrent.
 - Better disk IO performance.
 - Configureable disk preallocation to reduce file fragmentation.
 - The unchoke algorithm is global instead of per torrent. The number
   of peers to upload to is configurable.
-- Tracker errors are displayed in 'btcli stat' and most importantly don't
+- Tracker errors are displayed in 'txcli stat' and most importantly don't
   make torrents unload on startup.
-- The rates displayed by btcli are now computed in btpd and are averaged
+- The rates displayed by txcli are now computed in toxn and are averaged
   over the last 20 seconds.
-- btpd now compares size and mtime of content to see if the resume file is
+- toxn now compares size and mtime of content to see if the resume file is
   valid.
 
 Bug fixes:
@@ -137,14 +137,14 @@ Bug fixes:
 - A function was called prematurely which could trigger an assert in rare
   cases.
 
-btpd 0.7:
+toxn 0.7:
 ---------
 
 Bug fixes:
 - Some communication stupidities was fixed, resulting in better download
   performance.
 
-btpd 0.6:
+toxn 0.6:
 ---------
 
 Misc:
@@ -152,36 +152,36 @@ Misc:
   This protects from running out of memory because of a greedy peer.
 - End game is more efficient and uses much less memory.
 
-btpd 0.5:
+toxn 0.5:
 ---------
 
 Bug fixes:
 - The bitfield could be sent too late. This could cause the receiving
   peer to close the connection.
 
-btpd 0.4:
+toxn 0.4:
 ---------
 
 Misc:
 - The 0.1 rate limiter is back. It runs at a configurable hz now.
-- Added "--bw-hz" option to btpd.
+- Added "--bw-hz" option to toxn.
 - Multiple have messages can be sent in place of a bitfield.
-- If btpd can't write to a peer for 60s, it will be disconnected.
+- If toxn can't write to a peer for 60s, it will be disconnected.
 
 Bug fixes:
-- A calculation error made btpd buggy with small torrents.
+- A calculation error made toxn buggy with small torrents.
   This caused strange crashes and many reports on bad hashes in the log.
-- The bitfield was sent too early. A peer could miss pieces btpd got
+- The bitfield was sent too early. A peer could miss pieces toxn got
   while the peer was in handshake.
 - Some situations in end game or with bad hashes could cause a crash.
 
-btpd 0.3:
+toxn 0.3:
 ---------
 
 Misc:
 - New download strategy.
 - Pipe ten requests instead of five.
-- "-d" option added to btpd.
+- "-d" option added to toxn.
 - "--with-warn" option added to configure. The default is now
   to compile with warnings off.
 
@@ -190,7 +190,7 @@ Bug fixes:
   choked or was lost, causing a piece download to wait until end game.
 - The peer wanted level could get too high during end game.
 
-btpd 0.2:
+toxn 0.2:
 ---------
 
 Misc:

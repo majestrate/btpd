@@ -1,4 +1,4 @@
-Package: lokinet-btpd
+Package: lokinet-toxn
 Version: 1.0
 Architecture: all
 Maintainer: necro_nemesis

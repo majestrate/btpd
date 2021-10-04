@@ -1,5 +1,5 @@
-#ifndef BTPD_METAINFO_H
-#define BTPD_METAINFO_H
+#ifndef TOXN_METAINFO_H
+#define TOXN_METAINFO_H
 
 struct mi_file {
     char *path;
