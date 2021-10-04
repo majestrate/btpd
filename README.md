@@ -2,7 +2,7 @@
 
 # TOXN
 
-BitTorrent Protocol Daemon
+Lokinet BitTorrent Protocol Daemon
 
 ## Index
 
@@ -152,7 +152,7 @@ Add foo.torrent, with content dir foo.torrent.d, and start it.
 
 Same as above without starting it.
 ```
-# txcli add --no-start -d foo.torrent.d foo.torrent 
+# txcli add --no-start -d foo.torrent.d foo.torrent
 ```
 
 Start bar.torrent and torrent number 7.
