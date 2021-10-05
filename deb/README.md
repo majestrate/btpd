@@ -1,9 +1,9 @@
 ## Debian package instructions
 
-install `sudo dpkg -i lokinet-toxn.deb`
+install `sudo dpkg -i toxn.deb`
 
-Start the deamon from toxn from desktop entry "Lokinet-toxn".
+Start the deamon from toxn from desktop entry "toxn".
 
-To start adding torrents run "Lokinet-txcli" from desktop entry which will open terminal with help instructions.
+To start adding torrents run "txcli" from desktop entry which will open terminal with help instructions.
 
-removal `sudo apt remove lokinet-toxn`
+removal `sudo apt remove toxn`
