@@ -256,4 +256,4 @@ be per torrent, in some future version of toxn.
 ## Contact
 
 If you wish to get in touch to get help, contribute or just say hi, don't
-hesitate to come to our IRC channel [#toxn on freenode](irc://chat.freenode.net/%23toxn).
+hesitate to come to the Lokinet channel on Session messenger app https://getsession.org/.
