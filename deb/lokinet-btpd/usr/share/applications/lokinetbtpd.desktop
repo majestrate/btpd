@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Lokinet toxn
-Exec=/usr/bin/toxn -4
-Terminal=false
-Type=Application
-Icon=/usr/share/icons/lokinettoxn.png
-Comment=Lokinet BitTorrent Daemon
-Categories=Network;FileTransfer;P2P;GTK;
