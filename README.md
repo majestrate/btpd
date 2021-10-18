@@ -2,7 +2,8 @@
 
 # TOXN
 
-Lokinet BitTorrent Protocol Daemon
+Torrent Over oXeN
+Lokinet BitTorrent Daemon
 
 ## Index
 
