@@ -2,7 +2,7 @@
 
 # TOXN
 
-Torrent Over oXeN
+Torrent over OXEN
 
 Lokinet BitTorrent Daemon
 
