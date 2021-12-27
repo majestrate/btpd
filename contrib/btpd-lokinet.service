@@ -4,7 +4,7 @@ Wants=lokinet.service
 After=lokinet.service
 
 [Service]
-User=_btpd
+User=btpd
 ExecStart=/usr/bin/btpd --no-daemon -4 --empty-start
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
