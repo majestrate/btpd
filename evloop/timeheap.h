@@ -1,5 +1,5 @@
-#ifndef BTPD_TIMEHEAP_H
-#define BTPD_TIMEHEAP_H
+#ifndef TOXN_TIMEHEAP_H
+#define TOXN_TIMEHEAP_H
 
 struct th_handle {
     int i;

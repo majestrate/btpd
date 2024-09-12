@@ -1,4 +1,4 @@
-#include "btcli.h"
+#include "txcli.h"
 
 void
 usage_rate(void)
@@ -74,7 +74,7 @@ cmd_rate(int argc, char **argv)
     up = parse_rate(argv[0]);
     down = parse_rate(argv[1]);
 
-    btpd_connect();
-    handle_ipc_res(btpd_rate(ipc, up, down), "rate", argv[1]);
+    toxn_connect();
+    handle_ipc_res(toxn_rate(ipc, up, down), "rate", argv[1]);
 }
 

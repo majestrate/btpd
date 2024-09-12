@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=toxn-cli
+Exec=bash -c '/usr/bin/txcli --help;$SHELL'
+Terminal=true
+Type=Application
+Icon=/usr/share/icons/toxn.png
+Comment=Lokinet BitTorrent Daemon
+Categories=Network;FileTransfer;P2P;GTK;
+

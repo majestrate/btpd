@@ -1,4 +1,4 @@
-#include "btcli.h"
+#include "txcli.h"
 
 void
 usage_start(void)
@@ -46,14 +46,14 @@ cmd_start(int argc, char **argv)
     if ((argc == 0 && !all) || (all && argc != 0))
         usage_start();
 
-    btpd_connect();
+    toxn_connect();
     if (all) {
-        enum ipc_err code = btpd_start_all(ipc);
+        enum ipc_err code = toxn_start_all(ipc);
         if (code != IPC_OK)
             diemsg("command failed (%s).\n", ipc_strerror(code));
     } else {
        for (int i = 0; i < argc; i++)
            if (torrent_spec(argv[i], &t))
-               handle_ipc_res(btpd_start(ipc, &t), "start", argv[i]);
+               handle_ipc_res(toxn_start(ipc, &t), "start", argv[i]);
     }
 }

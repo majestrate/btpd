@@ -1,10 +1,10 @@
-#include "btcli.h"
+#include "txcli.h"
 
 void
 usage_add(void)
 {
     printf(
-        "Add torrents to btpd.\n"
+        "Add torrents to toxn.\n"
         "\n"
         "Usage: add [-n name] [-T] [-N] -d dir file(s)\n"
         "\n"
@@ -77,7 +77,7 @@ cmd_add(int argc, char **argv)
     if (argc < 1 || dir == NULL)
         usage_add();
 
-    btpd_connect();
+    toxn_connect();
     char *mi;
     size_t mi_size;
     enum ipc_err code;
@@ -108,12 +108,12 @@ cmd_add(int argc, char **argv)
           label = benc_dget_str(mi, "announce", NULL);
        else
           label = glabel;
-       code = btpd_add(ipc, mi, mi_size, dpath, name, label);
+       code = toxn_add(ipc, mi, mi_size, dpath, name, label);
        if ((code == IPC_OK) && start) {
            struct ipc_torrent tspec;
            tspec.by_hash = 1;
            mi_info_hash(mi, tspec.u.hash);
-           code = btpd_start(ipc, &tspec);
+           code = toxn_start(ipc, &tspec);
        }
        if (code != IPC_OK) {
            fprintf(stderr, "command failed for '%s' (%s).\n", argv[nfile], ipc_strerror(code));

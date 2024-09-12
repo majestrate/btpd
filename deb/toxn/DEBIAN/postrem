@@ -1,0 +1,2 @@
+rm /usr/share/applications/lokinettxcli.desktop 
+rm /usr/share/applications/lokinettoxen.desktop

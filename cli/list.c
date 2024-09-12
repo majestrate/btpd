@@ -1,4 +1,4 @@
-#include "btcli.h"
+#include "txcli.h"
 #include "utils.h"
 
 void
@@ -12,8 +12,8 @@ usage_list(void)
         "\n"
         "Arguments:\n"
         "torrent ...\n"
-        "\tThe torrents to list. Running 'btcli list' without any arguments\n"
-        "\tor options is equivalent to running 'btcli list -ai'.\n"
+        "\tThe torrents to list. Running 'txcli list' without any arguments\n"
+        "\tor options is equivalent to running 'txcli list -ai'.\n"
         "\n"
         "Options:\n"
         "-a\n"
@@ -33,7 +33,7 @@ struct item {
     char st;
     long long cgot, csize, totup, downloaded, uploaded, rate_up, rate_down;
     uint32_t torrent_pieces, pieces_have, pieces_seen;
-    BTPDQ_ENTRY(item) entry;
+    TOXNQ_ENTRY(item) entry;
 };
 
 struct items {
@@ -41,20 +41,20 @@ struct items {
     char **argv;
     int ntps;
     struct ipc_torrent *tps;
-    BTPDQ_HEAD(item_tq, item) hd;
+    TOXNQ_HEAD(item_tq, item) hd;
 };
 
 void
 itm_insert(struct items *itms, struct item *itm)
 {
     struct item *p;
-    BTPDQ_FOREACH(p, &itms->hd, entry)
+    TOXNQ_FOREACH(p, &itms->hd, entry)
         if (strcmp(itm->name, p->name) < 0)
             break;
     if (p != NULL)
-        BTPDQ_INSERT_BEFORE(p, itm, entry);
+        TOXNQ_INSERT_BEFORE(p, itm, entry);
     else
-        BTPDQ_INSERT_TAIL(&itms->hd, itm, entry);
+        TOXNQ_INSERT_TAIL(&itms->hd, itm, entry);
 }
 
 static void
@@ -104,7 +104,7 @@ print_items(struct items* itms, char *format)
 {
     struct item *p;
     char *it;
-    BTPDQ_FOREACH(p, &itms->hd, entry) {
+    TOXNQ_FOREACH(p, &itms->hd, entry) {
         if(format) {
             for (it = format; *it; ++it) {
                 switch (*it) {
@@ -217,14 +217,14 @@ cmd_list(int argc, char **argv)
     else
         twc = IPC_TWC_ACTIVE;
 
-    btpd_connect();
+    toxn_connect();
     itms.count = 0;
     itms.argv = argv;
-    BTPDQ_INIT(&itms.hd);
+    TOXNQ_INIT(&itms.hd);
     if (itms.tps == NULL)
-        code = btpd_tget_wc(ipc, twc, keys, nkeys, list_cb, &itms);
+        code = toxn_tget_wc(ipc, twc, keys, nkeys, list_cb, &itms);
     else
-        code = btpd_tget(ipc, itms.tps, itms.ntps, keys, nkeys, list_cb, &itms);
+        code = toxn_tget(ipc, itms.tps, itms.ntps, keys, nkeys, list_cb, &itms);
     if (code != IPC_OK)
         diemsg("command failed (%s).\n", ipc_strerror(code));
     if (format == NULL)

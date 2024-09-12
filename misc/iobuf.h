@@ -1,5 +1,5 @@
-#ifndef BTPD_IOBUF_H
-#define BTPD_IOBUF_H
+#ifndef TOXN_IOBUF_H
+#define TOXN_IOBUF_H
 
 struct iobuf {
     uint8_t *buf;

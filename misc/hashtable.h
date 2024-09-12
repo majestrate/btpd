@@ -1,5 +1,5 @@
-#ifndef BTPD_HASHTABLE_H
-#define BTPD_HASHTABLE_H
+#ifndef TOXN_HASHTABLE_H
+#define TOXN_HASHTABLE_H
 
 struct htbl_iter {
     struct _htbl *tbl;

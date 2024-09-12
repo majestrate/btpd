@@ -1,10 +1,10 @@
-#include "btcli.h"
+#include "txcli.h"
 
 void
 usage_kill(void)
 {
     printf(
-        "Shutdown btpd.\n"
+        "Shutdown toxn.\n"
         "\n"
         "Usage: kill\n"
         "\n"
@@ -20,7 +20,7 @@ cmd_kill(int argc, char **argv)
     if (argc > 1)
         usage_kill();
 
-    btpd_connect();
-    if ((code = btpd_die(ipc)) != 0)
+    toxn_connect();
+    if ((code = toxn_die(ipc)) != 0)
         diemsg("command failed (%s).\n", ipc_strerror(code));
 }

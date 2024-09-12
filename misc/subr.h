@@ -1,5 +1,5 @@
-#ifndef BTPD_SUBR_H
-#define BTPD_SUBR_H
+#ifndef TOXN_SUBR_H
+#define TOXN_SUBR_H
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -45,7 +45,7 @@ int read_fully(int fd, void *buf, size_t len);
 int write_fully(int fd, const void *buf, size_t len);
 void *read_file(const char *path, void *buf, size_t *size);
 
-char *find_btpd_dir(void);
+char *find_toxn_dir(void);
 int make_abs_path(const char *in, char *out);
 
 #ifndef HAVE_ASPRINTF

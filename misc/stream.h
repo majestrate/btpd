@@ -1,5 +1,5 @@
-#ifndef BTPD_STREAM_H
-#define BTPD_STREAM_H
+#ifndef TOXN_STREAM_H
+#define TOXN_STREAM_H
 
 typedef int (*fdcb_t)(const char *, int *, void *);
 typedef void (*hashcb_t)(uint32_t, uint8_t *, void *);
